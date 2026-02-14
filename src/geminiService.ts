@@ -22,12 +22,10 @@ const fallbackResults: TriageResults = {
 // Function to analyze project data and identify opportunities
 export const analyzeProjectData = async (params: OperationalParameters): Promise<TriageResults> => {
   try {
-    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
     
-    // Select the targeted query based on the active sector
     let targetQuery = SOURCE_MAP[params.sector as string] || SOURCE_MAP['default'];
 
-    // Augment search query if RFP mode is active
     if (params.rfpMode) {
       targetQuery = `("Request for Proposal" OR "RFP" OR "Solicitation" OR "Tender") AND (${targetQuery})`;
     }
@@ -200,7 +198,7 @@ export const analyzeProjectData = async (params: OperationalParameters): Promise
 
 export const generateMissionBriefing = async (lead: Opportunity): Promise<MissionBriefing> => {
   try {
-    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
     
     const researchQuery = `"${lead.targetName}" strategic goals OR "${lead.pocName}" interview OR "${lead.targetName}" operational challenges`;
 
@@ -261,7 +259,7 @@ export const generateMissionBriefing = async (lead: Opportunity): Promise<Missio
 
 export const generateDiagnostic = async (lead: Opportunity): Promise<DiagnosticResult> => {
   try {
-    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
     
     const prompt = `
       Act as a Lead Strategy Consultant at District Analyst. 
