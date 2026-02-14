@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { DALane } from '../types.ts';
 
@@ -15,7 +14,10 @@ const LaneBadge: React.FC<LaneBadgeProps> = ({ lane }) => {
   };
 
   return (
-    <span className={`px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border shadow-sm ${styles[lane]}`}>
+    /* Added 'inline-flex' and 'w-fit' to ensure the badge 
+       always hugs the text and stays centered on mobile 
+    */
+    <span className={`inline-flex items-center justify-center w-fit px-2.5 py-1 rounded-lg text-[9px] md:text-[10px] font-black uppercase tracking-widest border shadow-sm whitespace-nowrap ${styles[lane]}`}>
       {lane}
     </span>
   );
